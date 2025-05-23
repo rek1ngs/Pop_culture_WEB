@@ -1,1 +1,59 @@
 
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: url('geometry-background.png') center center / cover no-repeat;
+  height: 100vh;
+}
+
+.overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.modal h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.modal p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal ul {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 14px;
+  padding-left: 20px;
+}
+
+.modal button {
+  padding: 10px 20px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal button:hover {
+  background-color: #bbb;
+}

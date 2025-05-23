@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popkultūras tests</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url('geometry-background.png') center center / cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quiz-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 600px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .question {
+      display: none;
+    }
+    .question.active {
+      display: block;
+    }
+    .navigation {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .navigation button {
+      margin: 5px;
+      padding: 10px 20px;
+    }
+    .options button {
+      display: block;
+      margin: 5px 0;
+    }
+    .drag-container, .drop-container {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .drag-item, .drop-zone {
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      background: #f0f0f0;
+      cursor: grab;
+    }
+    .drop-zone {
+      min-width: 100px;
+      min-height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="q0" class="question active">
+      <p>1. Kurš aktieris atveidoja Iron Man?</p>
+      <div class="options">
+        <button>Chris Evans</button>
+        <button>Robert Downey Jr.</button>
+        <button>Chris Hemsworth</button>
+        <button>Mark Ruffalo</button>
+      </div>
+    </div>
+
+    <div id="q1" class="question">
+      <p>2. Aizpildi dziesmas rindu: "We will, we will..."</p>
+      <input type="text" placeholder="...">
+    </div>
+
+    <div id="q2" class="question">
+      <p>3. Izvēlies pareizo gadu, kad iznāca filma "Titanic":</p>
+      <select>
+        <option>1995</option>
+        <option>1997</option>
+        <option>1999</option>
+        <option>2001</option>
+      </select>
+    </div>
+
+    <div id="q3" class="question">
+      <p>4. Savieno dziesmu ar izpildītāju</p>
+      <div class="drag-container">
+        <div class="drag-item" draggable="true">Thriller</div>
+        <div class="drag-item" draggable="true">Like a Prayer</div>
+        <div class="drag-item" draggable="true">Shape of You</div>
+      </div>
+      <div class="drop-container">
+        <div class="drop-zone" data-answer="Michael Jackson"></div>
+        <div class="drop-zone" data-answer="Madonna"></div>
+        <div class="drop-zone" data-answer="Ed Sheeran"></div>
+      </div>
+    </div>
+
+    <!-- Вопросы q4 по q14 аналогично: чередуются типы вопросов -->
+
+    <div class="navigation">
+      <button onclick="prevQuestion()">Iepriekšējais</button>
+      <button onclick="nextQuestion()">Nākamais</button>
+    </div>
+  </div>
+
+  <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => q.classList.toggle('active', i === index));
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion(current);
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    }
+
+    // Drag & Drop logic (basic)
+    const draggables = document.querySelectorAll('.drag-item');
+    const dropzones = document.querySelectorAll('.drop-zone');
+
+    draggables.forEach(item => {
+      item.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', item.textContent);
+      });
+    });
+
+    dropzones.forEach(zone => {
+      zone.addEventListener('dragover', e => e.preventDefault());
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        const data = e.dataTransfer.getData('text/plain');
+        zone.textContent = data;
+      });
+    });
+  </script>
+</body>
+</html>
