@@ -55,10 +55,27 @@
       min-width: 100px;
       min-height: 30px;
     }
+    #timer {
+       float: right;
+      top: 10px;
+      right: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    #result {
+      display: none;
+      font-size: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
   </style>
+  <script src="POP_Star_Micro.js"></script>
 </head>
 <body>
   <div class="quiz-container">
+    <div id="timer">30:00</div>
+
     <div id="q0" class="question active">
       <p>1. Kurš aktieris atveidoja Iron Man?</p>
       <div class="options">
@@ -98,12 +115,21 @@
       </div>
     </div>
 
-    <!-- Вопросы q4 по q14 аналогично: чередуются типы вопросов -->
-
     <div class="navigation">
       <button onclick="prevQuestion()">Iepriekšējais</button>
       <button onclick="nextQuestion()">Nākamais</button>
+      <button onclick="endTest()">Pabeigt testu</button>
     </div>
+
+    <div id="result">
+      <p>Tests ir pabeigts.</p>
+      <a href="POP_Star.html" class="navigation">
+        <button>Atgriezties uz sākumu</button>
+      </a>
+    </div>
+
+    <p id="attempts-counter">Šis ir tavs mēģinājums...</p>
+
   </div>
 
   <script>
@@ -128,7 +154,6 @@
       }
     }
 
-    // Drag & Drop logic (basic)
     const draggables = document.querySelectorAll('.drag-item');
     const dropzones = document.querySelectorAll('.drop-zone');
 
@@ -146,6 +171,29 @@
         zone.textContent = data;
       });
     });
+
+    // timer
+    let timeLeft = 30 * 60;
+    const timerEl = document.getElementById('timer');
+    const resultEl = document.getElementById('result');
+
+    const timerInterval = setInterval(() => {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        endTest();
+      }
+      timeLeft--;
+    }, 1000);
+
+    function endTest() {
+      document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
+      document.querySelector('.navigation').style.display = 'none';
+      resultEl.style.display = 'block';
+    }
+
   </script>
 </body>
 </html>
