@@ -4,72 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Popkultūras tests</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: url('geometry-background.png') center center / cover no-repeat;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .quiz-container {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 600px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    .question {
-      display: none;
-    }
-    .question.active {
-      display: block;
-    }
-    .navigation {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .navigation button {
-      margin: 5px;
-      padding: 10px 20px;
-    }
-    .options button {
-      display: block;
-      margin: 5px 0;
-    }
-    .drag-container, .drop-container {
-      display: flex;
-      gap: 10px;
-      margin: 10px 0;
-    }
-    .drag-item, .drop-zone {
-      padding: 10px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
-      background: #f0f0f0;
-      cursor: grab;
-    }
-    .drop-zone {
-      min-width: 100px;
-      min-height: 30px;
-    }
-    #timer {
-       float: right;
-      top: 10px;
-      right: 20px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    #result {
-      display: none;
-      font-size: 20px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-  </style>
+  <link rel="stylesheet" href="test_look.css">
   <script src="POP_Star_Micro.js"></script>
 </head>
 <body>
@@ -132,68 +67,6 @@
 
   </div>
 
-  <script>
-    let current = 0;
-    const questions = document.querySelectorAll('.question');
-
-    function showQuestion(index) {
-      questions.forEach((q, i) => q.classList.toggle('active', i === index));
-    }
-
-    function nextQuestion() {
-      if (current < questions.length - 1) {
-        current++;
-        showQuestion(current);
-      }
-    }
-
-    function prevQuestion() {
-      if (current > 0) {
-        current--;
-        showQuestion(current);
-      }
-    }
-
-    const draggables = document.querySelectorAll('.drag-item');
-    const dropzones = document.querySelectorAll('.drop-zone');
-
-    draggables.forEach(item => {
-      item.addEventListener('dragstart', e => {
-        e.dataTransfer.setData('text/plain', item.textContent);
-      });
-    });
-
-    dropzones.forEach(zone => {
-      zone.addEventListener('dragover', e => e.preventDefault());
-      zone.addEventListener('drop', e => {
-        e.preventDefault();
-        const data = e.dataTransfer.getData('text/plain');
-        zone.textContent = data;
-      });
-    });
-
-    // timer
-    let timeLeft = 30 * 60;
-    const timerEl = document.getElementById('timer');
-    const resultEl = document.getElementById('result');
-
-    const timerInterval = setInterval(() => {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        endTest();
-      }
-      timeLeft--;
-    }, 1000);
-
-    function endTest() {
-      document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
-      document.querySelector('.navigation').style.display = 'none';
-      resultEl.style.display = 'block';
-    }
-
-  </script>
+  <script src="POP_Star_Micro.js"></script>
 </body>
 </html>
