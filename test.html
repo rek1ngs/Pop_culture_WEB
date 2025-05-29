@@ -5,55 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Popkultūras tests</title>
   <link rel="stylesheet" href="test_look.css">
-  <script src="POP_Star_Micro.js"></script>
 </head>
+
 <body>
   <div class="quiz-container">
     <div id="timer">30:00</div>
 
-    <div id="q0" class="question active">
-      <p>1. Kurš aktieris atveidoja Iron Man?</p>
-      <div class="options">
-        <label><input type="radio" name="q0" value="evans"> Chris Evans</label>
-        <label><input type="radio" name="q0" value="downey"> Robert Downey Jr.</label>
-        <label><input type="radio" name="q0" value="hemsworth"> Chris Hemsworth</label>
-        <label><input type="radio" name="q0" value="ruffalo"> Mark Ruffalo</label>
-      </div>
-    </div>
-
-    <div id="q1" class="question">
-      <p>2. Aizpildi dziesmas rindu: "We will, we will..."</p>
-      <input type="text" placeholder="...">
-    </div>
-
-    <div id="q2" class="question">
-      <p>3. Izvēlies pareizo gadu, kad iznāca filma "Titanic":</p>
-      <select>
-        <option>1995</option>
-        <option>1997</option>
-        <option>1999</option>
-        <option>2001</option>
-      </select>
-    </div>
-
-    <div id="q3" class="question">
-      <p>4. Savieno dziesmu ar izpildītāju</p>
-      <div class="drag-container">
-        <div class="drag-item" draggable="true">Thriller</div>
-        <div class="drag-item" draggable="true">Like a Prayer</div>
-        <div class="drag-item" draggable="true">Shape of You</div>
-      </div>
-      <div class="drop-container">
-        <div class="drop-zone" data-answer="Michael Jackson"></div>
-        <div class="drop-zone" data-answer="Madonna"></div>
-        <div class="drop-zone" data-answer="Ed Sheeran"></div>
-      </div>
-    </div>
+    <div id="quiz"></div>
 
     <div class="navigation">
       <button onclick="prevQuestion()">Iepriekšējais</button>
       <button onclick="nextQuestion()">Nākamais</button>
       <button onclick="endTest()">Pabeigt testu</button>
+      <button onclick="check()">Parbaudit</button>
     </div>
 
     <div id="result">
@@ -63,10 +27,11 @@
       </a>
     </div>
 
-    <p id="attempts-counter">Šis ir tavs mēģinājums...</p>
+    <!-- <p id="attempts-counter">Šis ir tavs mēģinājums...</p> -->
 
   </div>
 
+  <script src="POP_Quest.js"></script>
   <script src="POP_Star_Micro.js"></script>
 </body>
 </html>

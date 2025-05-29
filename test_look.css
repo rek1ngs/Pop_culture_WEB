@@ -1,7 +1,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url('geometry-background.png') center center / cover no-repeat;
+      /* background: url('geometry-background.png') center center / cover no-repeat; */
       height: 100vh;
       display: flex;
       align-items: center;
@@ -61,3 +61,26 @@
       text-align: center;
       margin-top: 20px;
     }
+
+    .question {
+  display: none;
+}
+
+.question.active {
+  display: block;
+}
+
+.drop-zone {
+  min-height: 50px;
+  border: 2px dashed #aaa;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.drag-item {
+  display: inline-block;
+  background: #ddd;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: grab;
+}
