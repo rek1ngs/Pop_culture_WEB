@@ -2,7 +2,9 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  background: url('geometry-background.png') center center / cover no-repeat;
+    background: url(../assets/fon.jpg) center center / cover no-repeat;
+  
+  /* background: url('geometry-background.png') center center / cover no-repeat; */
   height: 100vh;
 }
 

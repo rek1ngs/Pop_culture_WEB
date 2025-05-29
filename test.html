@@ -4,77 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Popkultūras tests</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: url('geometry-background.png') center center / cover no-repeat;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .quiz-container {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 600px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    .question {
-      display: none;
-    }
-    .question.active {
-      display: block;
-    }
-    .navigation {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .navigation button {
-      margin: 5px;
-      padding: 10px 20px;
-    }
-    .options button {
-      display: block;
-      margin: 5px 0;
-    }
-    .drag-container, .drop-container {
-      display: flex;
-      gap: 10px;
-      margin: 10px 0;
-    }
-    .drag-item, .drop-zone {
-      padding: 10px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
-      background: #f0f0f0;
-      cursor: grab;
-    }
-    .drop-zone {
-      min-width: 100px;
-      min-height: 30px;
-    }
-    #timer {
-       float: right;
-      top: 10px;
-      right: 20px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    #result {
-      display: none;
-      font-size: 20px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-  </style>
-  <script src="POP_Star_Micro.js"></script>
+  <link rel="stylesheet" href="styles/test_style.css">
+  
 </head>
 <body>
   <div class="quiz-container">
     <div id="timer">30:00</div>
+    <div class="question-nav" id="questionNav"></div>
 
     <div id="q0" class="question active">
       <p>1. Kurš aktieris atveidoja Iron Man?</p>
@@ -109,15 +45,156 @@
         <div class="drag-item" draggable="true">Shape of You</div>
       </div>
       <div class="drop-container">
+      <div>
+
+        <div>Michael Jackson</div>
         <div class="drop-zone" data-answer="Michael Jackson"></div>
-        <div class="drop-zone" data-answer="Madonna"></div>
-        <div class="drop-zone" data-answer="Ed Sheeran"></div>
+      </div>
+        <div>
+          <div style="align-items: center;">Madonna</div>
+          <div class="drop-zone" data-answer="Madonna"></div>
+        </div>
+        <div>
+          <div>Ed Sheeran</div>
+          <div class="drop-zone" data-answer="Ed Sheeran"></div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div id="q4" class="question">
+      <p>5. Izvēlies latviešu popgrupas:</p>
+      <div class="options">
+        <label><input type="checkbox" value="Fabrika"> Fabrika</label><br>
+        <label><input type="checkbox" value="Mad Show Boys"> Mad Show Boys</label><br>
+        <label><input type="checkbox" value="Linas and Simona"> Linas and Simona</label><br>
+        <label><input type="checkbox" value="Pinboys"> Pinboys</label><br>
+        <label><input type="checkbox" value="The Hobos"> The Hobos</label><br>
+        <label><input type="checkbox" value="Pirates of the Sea"> Pirates of the Sea</label><br>
+        <label><input type="checkbox" value="The Beach Boys"> The Beach Boys</label><br>
+        <label><input type="checkbox" value="Star Pilots"> Star Pilots</label>
+      </div>
+    </div>
+
+    <div id="q5" class="question">
+      <p>6. Kurā gadā Latvija uzvarēja Eirovīzijā?</p>
+      <div class="options">
+        <label><input type="radio" name="q5" value="2000"> 2000</label><br>
+        <label><input type="radio" name="q5" value="2002"> 2002</label><br>
+        <label><input type="radio" name="q5" value="2005"> 2005</label><br>
+        <label><input type="radio" name="q5" value="2014"> 2014</label>
+      </div>
+    </div>
+
+    <div id="q6" class="question">
+      <p>7. Kurai dziesmai ir vislielākais atskaņojumu skaits Spotify 2025. gada maijā?</p>
+      <div class="options">
+        <label><input type="radio" name="q6" value="Shape of You"> “Shape of You” – Ed Sheeran</label><br>
+        <label><input type="radio" name="q6" value="As It Was"> “As It Was” – Harry Styles </label><br>
+        <label><input type="radio" name="q6" value="Believer"> “Believer” – Imagine Dragons</label><br>
+        <label><input type="radio" name="q6" value="Blinding Lights"> “Blinding Lights” – The Weeknd</label>
+      </div>
+    </div>
+
+    <div id="q7" class="question">
+      <p>8. Līgo svētkiem ir arī cits nosaukums: “Zāļu diena”.</p>
+      <div class="options">
+        <label><input type="radio" name="q7" value="true"> Patiess</label><br>
+        <label><input type="radio" name="q7" value="false"> Aplams</label>
+      </div>
+    </div>
+
+    <div id="q8" class="question">
+      <p>9. Kuram mūzikas izpildītājam pieder šis albums?</p>
+       <div style="display: flex; flex-direction: column; align-items: center;">
+        <div>
+          <img src="assets/album.png" alt="Albuma vāks" style="max-width: 100%; border-radius: 10px; margin: 10px 0;">
+        </div>
+         <input style="width: 49%;" type="text" id="q8input" placeholder="Ieraksti vārdu...">
+       </div>
+    </div>
+
+    <div id="q9" class="question">
+      <p>10. Kāds ir īstais galvenā varoņa vārds filmā “Bēgšana no Šoušenkas”?</p>
+      <div class="options">
+        <label><input type="radio" name="q9" value="Samuels Nortons"> Samuels Nortons</label><br>
+        <label><input type="radio" name="q9" value="Endijs Defrēns"> Endijs Defrēns</label><br>
+        <label><input type="radio" name="q9" value="Rendels Stīvenss"> Rendels Stīvenss</label><br>
+        <label><input type="radio" name="q9" value="Bairons Hedlijs"> Bairons Hedlijs</label>
+      </div>
+    </div>
+
+    <div id="q10" class="question">
+      <p>11. Kuriem žanriem pieder šīs filmas? (Vienu filmu katrā žanrā)</p>
+      <div class="drag-container">
+        <div class="drag-item" draggable="true">Pirmsākums</div>
+        <div class="drag-item" draggable="true">Paģiras</div>
+        <div class="drag-item" draggable="true">Platforma</div>
+        <div class="drag-item" draggable="true">Spiegu spēle</div>
+      </div>
+      <div class="drop-container">
+        <div>
+          <div>Zinātniskā fantastika</div>
+          <div class="drop-zone" data-answer="Zinātniskā fantastika"></div>
+        </div>
+        <div>
+          <div>Komedija</div>
+          <div class="drop-zone" data-answer="Komedija"></div>
+        </div>
+        <div>
+          <div>Šausmas</div>
+          <div class="drop-zone" data-answer="Šausmas"></div>
+        </div>
+        <div>
+          <div>Trilleris</div>
+          <div class="drop-zone" data-answer="Trilleris"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="q11" class="question">
+      <p>12. Kurš mūziķis ir pazīstams ar albumu “After Hours”?</p>
+      <div class="options">
+        <label><input type="radio" name="q11" value="The Weeknd"> The Weeknd</label><br>
+        <label><input type="radio" name="q11" value="Drake"> Drake</label><br>
+        <label><input type="radio" name="q11" value="Justin Bieber"> Justin Bieber</label><br>
+        <label><input type="radio" name="q11" value="Post Malone"> Post Malone</label>
+      </div>
+    </div>
+
+    <div id="q12" class="question">
+      <p>13. Kurš aktieris atveidoja Džeku filmā “Titanic”?</p>
+      <div class="options">
+        <label><input type="radio" name="q12" value="Leonardo DiCaprio"> Leonardo DiCaprio</label><br>
+        <label><input type="radio" name="q12" value="Brad Pitt"> Brad Pitt</label><br>
+        <label><input type="radio" name="q12" value="Tom Cruise"> Tom Cruise</label><br>
+        <label><input type="radio" name="q12" value="Matt Damon"> Matt Damon</label>
+      </div>
+    </div>
+
+    <div id="q13" class="question">
+      <p>14. Kura dziesma izpelnījās Grammy balvu 2023. gadā kā Gada dziesma (Song of the Year)?</p>
+      <div class="options">
+        <label><input type="radio" name="q13" value="Just Like That"> Just Like That</label><br>
+        <label><input type="radio" name="q13" value="About Damn Time"> About Damn Time</label><br>
+        <label><input type="radio" name="q13" value="As It Was"> As It Was</label><br>
+        <label><input type="radio" name="q13" value="Unholy"> Unholy</label>
+      </div>
+    </div>
+
+    <div id="q14" class="question">
+      <p>15. Kāds ir grupas “Queen” vokālista vārds?</p>
+      <div class="options">
+        <label><input type="radio" name="q14" value="Roger Taylor"> Roger Taylor</label><br>
+        <label><input type="radio" name="q14" value="Freddie Mercury"> Freddie Mercury</label><br>
+        <label><input type="radio" name="q14" value="Brian May"> Brian May</label><br>
+        <label><input type="radio" name="q14" value="John Deacon"> John Deacon</label>
       </div>
     </div>
 
     <div class="navigation">
       <button onclick="prevQuestion()">Iepriekšējais</button>
-      <button onclick="nextQuestion()">Nākamais</button>
+      <button id="nextQuest" onclick="nextQuestion()">Nākamais</button>
       <button onclick="endTest()">Pabeigt testu</button>
     </div>
 
@@ -132,68 +209,7 @@
 
   </div>
 
-  <script>
-    let current = 0;
-    const questions = document.querySelectorAll('.question');
+  <script src="scripts/test_scripts.js"></script>
 
-    function showQuestion(index) {
-      questions.forEach((q, i) => q.classList.toggle('active', i === index));
-    }
-
-    function nextQuestion() {
-      if (current < questions.length - 1) {
-        current++;
-        showQuestion(current);
-      }
-    }
-
-    function prevQuestion() {
-      if (current > 0) {
-        current--;
-        showQuestion(current);
-      }
-    }
-
-    const draggables = document.querySelectorAll('.drag-item');
-    const dropzones = document.querySelectorAll('.drop-zone');
-
-    draggables.forEach(item => {
-      item.addEventListener('dragstart', e => {
-        e.dataTransfer.setData('text/plain', item.textContent);
-      });
-    });
-
-    dropzones.forEach(zone => {
-      zone.addEventListener('dragover', e => e.preventDefault());
-      zone.addEventListener('drop', e => {
-        e.preventDefault();
-        const data = e.dataTransfer.getData('text/plain');
-        zone.textContent = data;
-      });
-    });
-
-    // timer
-    let timeLeft = 30 * 60;
-    const timerEl = document.getElementById('timer');
-    const resultEl = document.getElementById('result');
-
-    const timerInterval = setInterval(() => {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        endTest();
-      }
-      timeLeft--;
-    }, 1000);
-
-    function endTest() {
-      document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
-      document.querySelector('.navigation').style.display = 'none';
-      resultEl.style.display = 'block';
-    }
-
-  </script>
 </body>
 </html>
